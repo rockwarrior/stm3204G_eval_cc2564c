@@ -30,11 +30,11 @@ file(GLOB_RECURSE USER_SOURCES
 add_executable(${PROJECT_NAME}.elf ${USER_SOURCES} ${LINKER_SCRIPT})
 
 target_link_libraries(${PROJECT_NAME}.elf
-  Bluetopia/lib/gcc/libBluetopia_32_M4.fp_HW_FP.a
-  Bluetopia/profiles/audio/lib/gcc/libSS1BTAUD_32_M4.fp_HW_FP.a
-  Bluetopia/profiles/AVCTP/lib/gcc/libSS1BTAVC_32_M4.fp_HW_FP.a
-  Bluetopia/profiles/AVRCP/lib/gcc/libSS1BTAVR_32_M4.fp_HW_FP.a
-  Bluetopia/profiles/GAVD/lib/gcc/libSS1BTGAV_32_M4.fp_HW_FP.a)
+  ${PROJECT_SOURCE_DIR}/Bluetopia/lib/gcc/libBluetopia_32_M4.fp_HW_FP.a
+  ${PROJECT_SOURCE_DIR}/Bluetopia/profiles/audio/lib/gcc/libSS1BTAUD_32_M4.fp_HW_FP.a
+  ${PROJECT_SOURCE_DIR}/Bluetopia/profiles/AVCTP/lib/gcc/libSS1BTAVC_32_M4.fp_HW_FP.a
+  ${PROJECT_SOURCE_DIR}/Bluetopia/profiles/AVRCP/lib/gcc/libSS1BTAVR_32_M4.fp_HW_FP.a
+  ${PROJECT_SOURCE_DIR}/Bluetopia/profiles/GAVD/lib/gcc/libSS1BTGAV_32_M4.fp_HW_FP.a)
 
 set(BIN_FILE ${PROJECT_SOURCE_DIR}/cmake-build-debug/${PROJECT_NAME}.bin)
 

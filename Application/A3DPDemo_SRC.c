@@ -440,6 +440,7 @@ static int CloseA3DPStream(void);
 static int ReconfigureA3DPStream(AUD_Stream_Format_t *Format);
 
 static int PcmLoopback(ParameterList_t *TempParam);
+static int EnterDtm(ParameterList_t *TempParam);
 
 static void AttemptNextAutoConnect(void);
 
@@ -478,6 +479,7 @@ static void UserInterface(void)
    AddCommand("PLAY", Play);
    AddCommand("PAUSE", Pause);
    AddCommand("PCMLOOPBACK", PcmLoopback);
+   AddCommand("ENTERDTM", EnterDtm);
 
    /* Next display the available commands.                              */
    DisplayHelp(NULL);
@@ -1679,7 +1681,7 @@ static int DisplayHelp(ParameterList_t *TempParam)
    Display(("*                  GetLocalAddress, GetLocalName, SetLocalName,  *\r\n"));
    Display(("*                  GetClassOfDevice, SetClassOfDevice,           *\r\n"));
    Display(("*                  GetRemoteName, OpenSink, CloseSink, Play,     *\r\n"));
-   Display(("*                  Pause, Help                                   *\r\n"));
+   Display(("*                  Pause, EnterDtm, Help                         *\r\n"));
    Display(("******************************************************************\r\n"));
 
    return(0);
@@ -2965,6 +2967,15 @@ static int PcmLoopback(ParameterList_t *TempParam)
    }
 
    return(ret_val);
+}
+
+static int EnterDtm(ParameterList_t *TempParam) {
+   Display(("Entering: Direct Test Mode"));
+   int error = VS_Enable_RF_SIG_Test_Mode(BluetoothStackID);
+   if (error) {
+      DisplayFunctionError("EnterDtm", error);
+   }
+   return 0;
 }
 
    /* The following helper function is used to advance the process of   */

@@ -22,7 +22,7 @@ file(GLOB_RECURSE USER_SOURCES
   Bluetopia/btpskrnl/*.c
   Bluetopia/btpsvend/*.c
   Bluetopia/btvs/*.c
-  Bluetopia/hcitrans/*.c
+  Bluetopia/hcitrans.dma/*.c
   CMSIS/*.c
   STM32_StdPeriph_Lib/*.c
   startup_stm32f407xx.s)
